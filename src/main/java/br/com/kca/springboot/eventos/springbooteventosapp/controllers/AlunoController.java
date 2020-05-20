@@ -1,5 +1,6 @@
 package br.com.kca.springboot.eventos.springbooteventosapp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +11,8 @@ import br.com.kca.springboot.eventos.springbooteventosapp.repository.EventoRepos
 @Controller
 public class AlunoController {
 	
-	private EventoRepository er;
+	@Autowired
+	private EventoRepository re;
 	
 	@RequestMapping("/")
 	public String index() {
@@ -25,7 +27,7 @@ public class AlunoController {
 	@RequestMapping(value="/cadastrarEvento",method=RequestMethod.POST)
 	public String form(Aluno aluno) {
 		
-		er.save(aluno);
+		re.save(aluno);
 		
 		return "redirect:/cadastrarEvento";
 	}
