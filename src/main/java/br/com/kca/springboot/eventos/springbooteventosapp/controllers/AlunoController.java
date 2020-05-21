@@ -33,6 +33,12 @@ public class AlunoController {
 		return "redirect:/cadastrarEvento";
 	}
 	
-	
+	@RequestMapping("/alunos")
+	public ModelAndView listaEventos() {
+		ModelAndView mv = new ModelAndView("listaAlunos");
+		Iterable<Aluno> alunos = re.findAll();
+		mv.addObject("alunos", alunos);
+		return mv;
+	}
 
 }
